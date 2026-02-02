@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/windows/.vs
+/windows/api_tracing_1/.vs
+/windows/api_tracing_1/api_trac.8ff5b8dc/x64
+/windows/api_tracing_1/cape_test
+/windows/api_tracing_1/x64
+/windows/file_dropping_1/cape_test
+/windows/file_dropping_1/x64
+/windows/x64
+/output

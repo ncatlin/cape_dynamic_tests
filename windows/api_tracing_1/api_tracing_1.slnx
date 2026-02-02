@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../file_dropping_1/file_dropping_1.vcxproj" Id="81ac4eb5-7825-4453-bce6-fe3966a413a5" />
+  <Project Path="api_tracing_basic.vcxproj" Id="8ff5b8dc-f9c3-4b82-b338-4e3542e7696e" />
+</Solution>
