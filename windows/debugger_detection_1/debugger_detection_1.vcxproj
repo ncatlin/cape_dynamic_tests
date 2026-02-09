@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{8ff5b8dc-f9c3-4b82-b338-4e3542e7696e}</ProjectGuid>
-    <RootNamespace>apitracingbasic</RootNamespace>
+    <ProjectGuid>{c75c49cb-8a9e-4917-8cf0-27b3b212fa81}</ProjectGuid>
+    <RootNamespace>debuggerdetection1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>api_tracing_1</ProjectName>
+    <ProjectName>debugger_detection_win</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,7 +78,6 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,7 +149,11 @@ echo Deployment to %TEST_OUTPUT_DIR% complete.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="detection_routines.cpp" />
     <ClCompile Include="payload.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="detection_routines.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="test.py" />

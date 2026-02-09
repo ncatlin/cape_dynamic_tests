@@ -143,14 +143,12 @@ tar -a -c -f "%TEST_OUTPUT_DIR%\payload.zip" -C "$(OutDir)." "$(TargetFileName)"
 
 echo Copying support files
 :: 4. Copy the support files
-copy /y "$(ProjectDir)test.json" "%TEST_OUTPUT_DIR%\"
 copy /y "$(ProjectDir)test.py" "%TEST_OUTPUT_DIR%\"
 
 echo Deployment to %TEST_OUTPUT_DIR% complete.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="test.json" />
     <None Include="test.py" />
   </ItemGroup>
   <ItemGroup>

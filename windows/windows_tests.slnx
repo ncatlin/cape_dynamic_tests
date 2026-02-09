@@ -3,6 +3,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+
   <Project Path="api_tracing_1/api_tracing_1.vcxproj" Id="8ff5b8dc-f9c3-4b82-b338-4e3542e7696e" />
+  <Project Path="debugger_detection_1/debugger_detection_1.vcxproj" Id="c75c49cb-8a9e-4917-8cf0-27b3b212fa81" />
   <Project Path="file_dropping_1/file_dropping_1.vcxproj" Id="81ac4eb5-7825-4453-bce6-fe3966a413a5" />
+  <Project Path="TEMPLATE_CAPE_TEST/TEMPLATE_CAPE_TEST.vcxproj" Id="ebe63c3e-69ef-4047-bb8b-e119d64a07c5" />
 </Solution>
