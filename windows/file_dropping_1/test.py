@@ -13,7 +13,7 @@ class CapeDynamicTest (CapeDynamicTestBase):
         self.set_enforce_timeout(False)
         self.set_task_config({
               "Route": None,
-              "Tags": [ "windows","x64"],
+              "Tags": [ "win10","x64"],
               "Request Options": "",
               "Custom Request Params": None
           })

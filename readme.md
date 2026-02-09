@@ -6,11 +6,32 @@ Each test should consist of a directory containing:
 	payload.zip - Should contain one item (though this can be an archive). The content will be submitted to CAPE as the analysis target.
 	test.py - describes and evaluates the results of the Test using the cape_audit module (currently: https://github.com/ncatlin/cape_audit)
 
-# How to use
 
-* Either clone this repo, or download the Visual Studio Template [link todo]
+# How to deploy tests
 
-* Open in Visual Studio, create/copy your project as required
+* Create (see below) or download some tests. Here are some examples: https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/example_audit_packages.zip
+
+* Extract as needed
+
+* Copy the test directories to your CAPE server, eg: /opt/CAPEv2/tests/audit_payloads/module_name
+
+* Reload the modules in the audit framework and test away
+
+The following commands should work:
+
+```bash
+cd /tmp
+wget https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/example_audit_packages.zip
+sudo -u cape unzip example_audit_packages -d /opt/CAPEv2/tests/audit_packages/
+rm example_audit_packages.zip
+```
+
+
+# How to develop a new test
+
+* Either clone this repo, or download the [Visual Studio Template](https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/Cape.Test.Visual.Studio.Template.zip)
+
+* Open the solution/project in Visual Studio and create your project
 
 * Write a payload to perform the behaviour you are looking to test (it doesn't have to be a compiled binary)
 
@@ -22,12 +43,10 @@ Each test should consist of a directory containing:
 
 * Once the module correctly assesses your results, rebuild the project. ../output should now have the directory with the payload and test module.
 
-* Copy this directory to your CAPE server, eg: /opt/CAPEv2/tests/audit_payloads/module_name
-
-* Reload the modules in the audit framework and test away
-
 
 # Suggestions
+
+This has been developed and tested with Visual Studio 2026.
 
 The Visual Studio project executes post-build commands to create the audit package. Have a look at them when someone gives you a test and pay attention changes when reviewing pull requests.
 
@@ -36,3 +55,9 @@ It's advisable to have the payload statically linked (/MT) to reduce library imp
 Have an intial smoke test requirement to ensure that the payload is actually executing correctly. Not all VMs will have the same environment.
 
 Each test requires a round trip CAPE task - queue, spin up a vm, execute, wait, report. Try to design your test to evaluate multiple objectives in a single session, rather than building lots of tests with lots of payloads.
+
+Example for getting the outputs to your CAPE audits dir:
+
+pscp -pw password1 -r C:\devel\cape_dynamic_tests\output\* user@capeserver.testing.local:/opt/CAPEv2/tests/audit_packages/
+
+Important: Make sure the 'cape' user has write access to the directory as it will unzip your payload there.
