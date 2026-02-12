@@ -46,10 +46,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_sleep_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "NtDelayExecution", 
-                "arguments/value": "1337"
-            })
+            match_criteria=[
+                {"api": "NtDelayExecution"}, 
+                {"arguments/value": "1337"}
+            ])
         o_sleep_hook.set_result_verifier(evaluator)
         o_has_behaviour_trace.add_child_objective(o_sleep_hook)
 
@@ -80,10 +80,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_file_create.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "NtCreateFile",
-                "arguments/value": r".*FLAG_CREATED_FILENAME_FLAG.txt.*"
-            },
+            match_criteria=[
+                {"api": "NtCreateFile"},
+                {"arguments/value": r".*FLAG_CREATED_FILENAME_FLAG.txt.*"}
+            ],
             values_are_regexes=True
             )
         o_file_create.set_result_verifier(evaluator)
@@ -97,10 +97,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_regcreate_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "RegCreateKeyExA", 
-                "arguments/value": "Software\\FLAG_REGISTRY_KEY_NAME_FLAG"
-            })
+            match_criteria=[
+                {"api": "RegCreateKeyExA"}, 
+                {"arguments/value": "Software\\FLAG_REGISTRY_KEY_NAME_FLAG"}
+            ])
         o_regcreate_hook.set_result_verifier(evaluator)
         o_has_behaviour_trace.add_child_objective(o_regcreate_hook)
 
@@ -115,11 +115,11 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_regset_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "RegSetValueExA", 
-                "arguments/value": "FLAG_REGISTRY_VALUE_NAME_FLAG",
-                "arguments/value": "FLAG_REGISTRY_VALUE_CONTENT_FLAG"
-            })
+            match_criteria=[
+                {"api": "RegSetValueExA"}, 
+                {"arguments/value": "FLAG_REGISTRY_VALUE_NAME_FLAG"},
+                {"arguments/value": "FLAG_REGISTRY_VALUE_CONTENT_FLAG"}
+            ])
         o_regset_hook.set_result_verifier(evaluator)
         o_regcreate_hook.add_child_objective(o_regset_hook)
 
@@ -130,10 +130,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_net_send_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "send", 
-                "arguments/value": "FLAG_NETWORK_SENT_DATA_FLAG"
-            })
+            match_criteria=[
+                {"api": "send"}, 
+                {"arguments/value": "FLAG_NETWORK_SENT_DATA_FLAG"}
+            ])
         o_net_send_hook.set_result_verifier(evaluator)
         o_has_behaviour_trace.add_child_objective(o_net_send_hook)
 
@@ -145,10 +145,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_mutex_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "NtCreateMutant", 
-                "arguments/value": "FLAG_MUTEX_NAME_FLAG"
-            })
+            match_criteria=[
+                {"api": "NtCreateMutant"}, 
+                {"arguments/value": "FLAG_MUTEX_NAME_FLAG"}
+            ])
         o_mutex_hook.set_result_verifier(evaluator)
         o_has_behaviour_trace.add_child_objective(o_mutex_hook)
 
@@ -162,10 +162,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_key_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "category": "crypto", 
-                "arguments/value": "FLAG_CRYPT_KEY_FLAG"
-            })
+            match_criteria=[
+                {"category": "crypto"}, 
+                {"arguments/value": "FLAG_CRYPT_KEY_FLAG"}
+            ])
         o_key_hook.set_result_verifier(evaluator)
         o_has_behaviour_trace.add_child_objective(o_key_hook)
 
@@ -179,10 +179,10 @@ class CapeDynamicTest(CapeDynamicTestBase):
         o_mutex_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "category": "crypto", 
-                "arguments/value": "FLAG_CRYPT_PLAINTEXT_FLAG.*"
-            },
+            match_criteria=[
+                {"category": "crypto"}, 
+                {"arguments/value": "FLAG_CRYPT_PLAINTEXT_FLAG.*"}
+            ],
             values_are_regexes=True)
         o_mutex_hook.set_result_verifier(evaluator)
         o_key_hook.add_child_objective(o_mutex_hook)

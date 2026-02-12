@@ -29,7 +29,7 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_dropfile_hook.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={"name":"FLAG_FILEDROP_1A_FLAG"}
+            match_criteria=[{"name":"FLAG_FILEDROP_1A_FLAG"}]
                 )
         o_dropfile_hook.set_result_verifier(evaluator)
         self.add_objective(o_dropfile_hook)
@@ -42,7 +42,7 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_dropfilecontent.set_failure_msg("There may be a hooking problem/change or the sample failed to run properly")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={"data":"FLAG_FILEDROP_1B_FLAG.*"},
+            match_criteria=[{"data":"FLAG_FILEDROP_1B_FLAG.*"}],
             values_are_regexes=True
             )
         o_dropfilecontent.set_result_verifier(evaluator)
@@ -58,10 +58,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_immediate_delete.set_failure_msg("CAPE was unable to fetch a file that was written then immediately deleted")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "data":"FLAG_FILEDROP_2A_FLAG",
-                "data":"FLAG_FILEDROP_2B_FLAG.*",
-                },
+            match_criteria=[
+                {"data":"FLAG_FILEDROP_2A_FLAG"},
+                {"data":"FLAG_FILEDROP_2B_FLAG.*"},
+            ],
             values_are_regexes=True
             )
         o_immediate_delete.set_result_verifier(evaluator)
@@ -74,10 +74,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_never_close.set_failure_msg("CAPE failed to fetch a file when its handle was left open")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "data":"FLAG_FILEDROP_3A_FLAG",
-                "data":"FLAG_FILEDROP_3B_FLAG.*",
-                },
+            match_criteria=[
+                {"data":"FLAG_FILEDROP_3A_FLAG"},
+                {"data":"FLAG_FILEDROP_3B_FLAG.*"},
+            ],
             values_are_regexes=True
             )
         o_never_close.set_result_verifier(evaluator)
@@ -93,10 +93,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_dir_path.set_failure_msg("CAPE had incorrect dropped file directory handling")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "guest_paths":"FLAG_DIRDROP_1A_FLAG.*FLAG_DIRDROP_1B_FLAG",
-                "data":"FLAG_DIRDROP_1C_FLAG",
-                },
+            match_criteria=[
+                {"guest_paths":"FLAG_DIRDROP_1A_FLAG.*FLAG_DIRDROP_1B_FLAG"},
+                {"data":"FLAG_DIRDROP_1C_FLAG"},
+            ],
             values_are_regexes=True
             )
         o_dir_path.set_result_verifier(evaluator)
@@ -110,10 +110,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_dir_path_nest.set_failure_msg("CAPE had incorrect nested dropped file directory handling")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "guest_paths":"FLAG_DIRDROP_1A_FLAG.*FLAG_DIRDROP_1D_FLAG.*FLAG_DIRDROP_1E_FLAG",
-                "data":"FLAG_DIRDROP_1F_FLAG",
-                },
+            match_criteria=[
+                {"guest_paths":"FLAG_DIRDROP_1A_FLAG.*FLAG_DIRDROP_1D_FLAG.*FLAG_DIRDROP_1E_FLAG"},
+                {"data":"FLAG_DIRDROP_1F_FLAG"},
+            ],
             values_are_regexes=True
             )
         o_dir_path_nest.set_result_verifier(evaluator)
@@ -130,10 +130,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_committed_tx.set_failure_msg("CAPE did not fetch a file dropped by a committed transaction. (Known issue).")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "name":"FLAG_TRANSACTION_1A_FLAG",
-                "data":"FLAG_TRANSACTION_1B_FLAG.*",
-                },
+            match_criteria=[
+                {"name":"FLAG_TRANSACTION_1A_FLAG"},
+                {"data":"FLAG_TRANSACTION_1B_FLAG.*"},
+            ],
             values_are_regexes=True
             )
         o_committed_tx.set_result_verifier(evaluator)
@@ -147,10 +147,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_transaction_api.set_failure_msg("CAPE did not hook transacted file creation.")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "api": "CreateFileTransactedW", 
-                "arguments/value": ".*FLAG_TRANSACTION_1A_FLAG.*"
-            },
+            match_criteria=[
+                {"api": "CreateFileTransactedW"}, 
+                {"arguments/value": ".*FLAG_TRANSACTION_1A_FLAG.*"} 
+            ],
             values_are_regexes=True
             )
         o_transaction_api.set_result_verifier(evaluator)
@@ -164,10 +164,10 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_reverted_tx.set_failure_msg("CAPE did not fetch a file created in a reverted transaction.")
         evaluator = VerifyReportSectionHasMatching(
             path="dropped",
-            match_criteria={
-                "name":"FLAG_TRANSACTION_2A_FLAG",
-                "data":"FLAG_TRANSACTION_2B_FLAG.*",
-                },
+            match_criteria=[
+                {"name":"FLAG_TRANSACTION_2A_FLAG"},
+                {"data":"FLAG_TRANSACTION_2B_FLAG.*"},
+            ],
             values_are_regexes=True
             )
         o_reverted_tx.set_result_verifier(evaluator)
@@ -183,11 +183,11 @@ class CapeDynamicTest (CapeDynamicTestBase):
         o_transaction_api2.set_failure_msg("CAPE did not hook the API calls involved in reverted file transactions.")
         evaluator = VerifyReportSectionHasMatching(
             path="behavior/processes/calls",
-            match_criteria={
-                "category": "filesystem", 
-                "arguments/value": ".*FLAG_TRANSACTION_2A_FLAG.*",
-                "arguments/value": ".*FLAG_TRANSACTION_2B_FLAG.*"
-            },
+            match_criteria=[
+                {"category": "filesystem"}, 
+                {"arguments/value": ".*FLAG_TRANSACTION_2A_FLAG.*"},
+                {"arguments/value": ".*FLAG_TRANSACTION_2B_FLAG.*"}
+            ],
             values_are_regexes=True
             )
         o_transaction_api2.set_result_verifier(evaluator)

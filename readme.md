@@ -9,7 +9,7 @@ Each test should consist of a directory containing:
 
 # How to deploy tests
 
-* Create (see below) or download some tests. Here are some examples: https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/example_audit_packages.zip
+* Create (see below) or download some tests. Here are some examples: https://github.com/ncatlin/cape_dynamic_tests/releases/download/v2-demo/example_audit_packages.zip
 
 * Extract as needed
 
@@ -21,7 +21,7 @@ The following commands should work:
 
 ```bash
 cd /tmp
-wget https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/example_audit_packages.zip
+wget https://github.com/ncatlin/cape_dynamic_tests/releases/download/v2-demo/example_audit_packages.zip
 sudo -u cape unzip example_audit_packages -d /opt/CAPEv2/tests/audit_packages/
 rm example_audit_packages.zip
 ```
@@ -29,7 +29,7 @@ rm example_audit_packages.zip
 
 # How to develop a new test
 
-* Either clone this repo, or download the [Visual Studio Template](https://github.com/ncatlin/cape_dynamic_tests/releases/download/v1-demo/Cape.Test.Visual.Studio.Template.zip)
+* Either clone this repo, or download the [Visual Studio Template](https://github.com/ncatlin/cape_dynamic_tests/releases/download/v2-demo/Cape.Test.Visual.Studio.Template.zip)
 
 * Open the solution/project in Visual Studio and create your project
 
