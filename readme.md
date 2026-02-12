@@ -57,7 +57,7 @@ Have an intial smoke test requirement to ensure that the payload is actually exe
 Each test requires a round trip CAPE task - queue, spin up a vm, execute, wait, report. Try to design your test to evaluate multiple objectives in a single session, rather than building lots of tests with lots of payloads.
 
 Example for getting the outputs to your CAPE audits dir:
-
+`
 pscp -pw password1 -r C:\devel\cape_dynamic_tests\output\* user@capeserver.testing.local:/opt/CAPEv2/tests/audit_packages/
-
+`
 Important: Make sure the 'cape' user has write access to the directory as it will unzip your payload there.
